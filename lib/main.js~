@@ -1,0 +1,28 @@
+var data = require( 'sdk/self' ).data;
+var pageMod = require( 'sdk/page-mod' );
+var simpleStorage = require("sdk/simple-storage");
+
+pageMod.PageMod( {
+	include: ["*"],
+	
+	// contentStyle is built dynamically here to include absolute URLs
+	// for the images referenced by jquery.ime.css.
+	// This workaround is needed because we can't use relative URLs 
+	// in contentStyleFile or contentStyle.
+	
+contentStyleFile: [
+		data.url( 'introjs.css' ),
+		data.url( 'refstyle.css' )
+	],
+	// Inject the required scripts into the page
+	contentScriptFile: [
+		data.url( 'jquery.js' ),
+		data.url( 'prototype.js' ),
+		data.url( 'rangy-core.js' ),
+		data.url( 'jquery-ui.js' ),
+		data.url( 'auco.js' ),
+		data.url( 'triger.js' )		
+		
+	]
+} );
+
